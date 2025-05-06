@@ -1,0 +1,584 @@
+/*pagprincipal.tsx*/
+/*.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  .title {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #2c3e50;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }*/
+
+  .fondoConImagen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    align-items: center;        /* Centra verticalmente */
+    justify-content: flex-end;  /* Mueve el contenido a la derecha */
+    padding-right: 50px;        /* Espacio desde el borde derecho */
+  }
+  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 15px;
+    color: white;
+    width: 400px;
+    text-align: left;
+  }
+  
+  
+  .title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #cf1d1df7;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+  }
+  
+
+  /*Login.tsx*/	
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .inputGroup {
+    margin-bottom: 1rem;
+  }
+  
+  .input {
+    padding: 0.5rem;
+    width: 250px;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  /*Registro.tsx*/
+  .containerRegistro {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+    width: 100vw; /* Ocupa el 100% del ancho */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+  }
+  
+  .topFrame {
+    flex: 0 0 20%; /* 20% de la altura para el frame superior */
+    background-color: #e0f7fa; /* Color celestito */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .bottomFrame {
+    flex: 1; /* El resto del espacio para el frame inferior */
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /*inversionsta*/
+  .closeButton {
+    position: absolute;
+    top: 13px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: #b90707;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .pinContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #222;
+    color: rgb(0, 0, 0);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+  
+
+  .containerRegistro {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+  }
+  
+  .topFrame {
+    flex: 0 0 20%;
+    background-color: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .bottomFrame {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #2980b9;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input, .select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /*Pin sencillo*/
+  .pinContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+  
+  .pinInputs {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .pinInput {
+    width: 27px;
+    height: 27px;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .pinInput:focus {
+    border-color: #007bff;
+  }
+  
+  .error {
+    border-color: red;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 12px;
+  }
+  
+  
+
+  /*OrdenInverCompra*/
+  /* styles.module.css */
+
+.containerRegistro {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+}
+
+.topFrame {
+  flex: 0 0 20%;
+  background-color: #e0f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.bottomFrame {
+  flex: 1;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+/* Botones de selección de mercado */
+.button {
+  padding: 0.75rem 1.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Formulario mostrado dentro de OrdenMerCoNY */
+.ordenContainer {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-weight: bold;
+  color: #333;
+}
+
+.inputGroup input,
+.inputGroup select {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.buttonSecundario {
+  background-color: #f3d5d2;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.buttonSecundario:hover {
+  background-color: #c0392b;
+}
+
+
+  /*Orden de compra inversionista OrdenMerCoNY*/
+  .ordenContainer {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 24px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputGroup label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .inputGroup input,
+  .inputGroup select {
+    padding: 8px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+  }
+  
+  .inputGroup input:focus,
+  .inputGroup select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .inputGroup input[readonly] {
+    background-color: #f1f1f1;
+    color: #333;
+    cursor: not-allowed;
+  }
+  
+  .botones {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #218838;
+  }
+  
+  .buttonSecundario {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .buttonSecundario:hover {
+    background-color: #c82333;
+  }
+
+  /* perfil inversionista*/
+  .perfilContainer {
+    width: 100vw;
+    height: 100vh;
+    padding: 32px;
+    background: #f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+  }
+  
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 24px;
+    border: 3px solid #007bff;
+  }
+  
+  .userInfo h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .riesgo {
+    margin: 8px 0 0;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .seccion {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .listaOrdenes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .orden {
+    padding: 16px;
+    margin: 12px 0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .pendiente {
+    border-left: 6px solid #ffc107;
+    color: #856404;
+  }
+  
+  .en\ ejecución {
+    border-left: 6px solid #17a2b8;
+    color: #0c5460;
+  }
+  
+  .cancelada {
+    border-left: 6px solid #dc3545;
+    color: #721c24;
+  }
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+
+
+
+  
