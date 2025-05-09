@@ -23,8 +23,8 @@ const OrdenMerCoNY = () => {
 
   const enviarOrden = async () => {
     const ordenData = {
-      estado: empresaSeleccionada,
-      cantidadAcciones: parseInt(cantidad),
+      empresa : empresaSeleccionada,
+      cantidad: parseInt(cantidad),
     };
 
     try {
