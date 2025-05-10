@@ -5,6 +5,9 @@ import Login from './Pages/Login';
 import Registro from './Pages/Registro';
 import OrdenInverCompra from './Pages/OrdenInverCompra';
 import StockChart from './Pages/grafica';
+import Dashboard from './Pages/Dashboard';
+
+
 import styles from './Style/styles.module.css';
 
 
@@ -16,6 +19,9 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Registro />} />
       <Route path="/ordeninvercompra" element={<OrdenInverCompra />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      
+      
       <Route path="/grafica" element={<StockChart symbol="TSLA" apiKey="d0e1adhr01qv1dmkdp50d0e1adhr01qv1dmkdp5g" />} />
 
       
