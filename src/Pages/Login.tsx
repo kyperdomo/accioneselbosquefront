@@ -4,27 +4,29 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Password } from 'primereact/password';
 import { Message } from 'primereact/message';
-import Dashboard from './Dashboard';
+import { useNavigate } from 'react-router-dom';
 import styles from '../Style/login.module.css';
 
 function Login() {
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [error, setError] = useState('');
-  const [formularioActivo, setFormularioActivo] = useState<'login' | 'dashboard'>('login');
+  const navigate = useNavigate();
 
   const handleInversionistaClick = (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!usuario || !contraseña) {
       setError('Por favor ingrese usuario y contraseña');
       return;
     }
-    setFormularioActivo('dashboard');
-  };
 
-  if (formularioActivo === 'dashboard') {
-    return <Dashboard />;
-  }
+    // Guardar estado de autenticación
+    localStorage.setItem('isAuthenticated', 'true');
+    
+    // Redirigir al dashboard
+    navigate('/dashboard');
+  };
 
   return (
     <div className={styles.loginBackground}>

@@ -14,7 +14,7 @@
 
 .mainTitle h1 {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: #283593;
   margin-bottom: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -27,7 +27,7 @@
 
 .sectionTitle h2 {
   font-size: 1.75rem;
-  color: var(--primary-color);
+  color: #283593;
   margin-bottom: 0.75rem;
   font-weight: 500;
 }
@@ -35,7 +35,7 @@
 .titleDivider {
   height: 4px;
   width: 100px;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-400));
+  background: linear-gradient(90deg, #283593, #283593);
   margin: 0 auto;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -88,7 +88,7 @@
 }
 
 .editButton {
-  background: var(--primary-color) !important;
+  background: #4CAF50 !important;
   border: none !important;
   padding: 0.75rem 1.5rem !important;
   border-radius: 8px !important;
@@ -97,7 +97,7 @@
 }
 
 .editButton:hover {
-  background: var(--primary-600) !important;
+  background: #43A047 !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -122,7 +122,7 @@
   gap: 1rem;
   padding: 1rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--text-secondary-color);
   background-color: rgba(0, 123, 255, 0.05);
   border-radius: 8px 8px 0 0;
 }
@@ -154,7 +154,7 @@
 }
 
 .dialogHeader {
-  background: var(--primary-color) !important;
+  background: #4CAF50 !important;
   color: white !important;
   padding: 1.25rem 1.5rem !important;
   border-radius: 12px 12px 0 0 !important;
@@ -226,7 +226,7 @@
 }
 
 .saveButton {
-  background: var(--primary-color) !important;
+  background: #4CAF50 !important;
   border: none !important;
   padding: 0.75rem 1.75rem !important;
   border-radius: 8px !important;
@@ -235,7 +235,7 @@
 }
 
 .saveButton:hover {
-  background: var(--primary-600) !important;
+  background: #43A047 !important;
   transform: translateY(-1px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }

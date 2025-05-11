@@ -91,9 +91,9 @@
 }
 
 .activeButton {
-  background: var(--primary-color) !important;
+  background: #4CAF50 !important;
   color: white !important;
-  border-color: var(--primary-color) !important;
+  border-color: #43A047 !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -136,4 +136,36 @@
   .formContainer, .chartContainer {
     padding: 1rem !important;
   }
+}
+
+
+
+/* Estilos para la gráfica */
+.chartContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartPlaceholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.loadingMessage, .emptyMessage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--text-color-secondary);
+}
+
+/* Asegura que el gráfico ocupe todo el espacio disponible */
+.p-chart {
+  flex: 1;
+  min-height: 300px;
 }

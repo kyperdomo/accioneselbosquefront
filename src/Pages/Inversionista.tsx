@@ -61,6 +61,7 @@ const Inversionista = () => {
       setIsPinValid(true);
       alert('Registro completado exitosamente');
       setMostrarPin(false);
+      // Aquí puedes agregar la lógica para enviar los datos al backend
     } else {
       setIsPinValid(false);
     }
@@ -171,7 +172,7 @@ const Inversionista = () => {
           setMostrarPin(false);
           setIsPinValid(true);
         }}
-        header="Verificación de Seguridad"
+        header="Verificación de Seguridad - Inversionista"
         footer={footer}
         className={styles.pinDialog}
         contentClassName={styles.pinDialogContent}
