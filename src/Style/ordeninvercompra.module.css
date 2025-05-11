@@ -1,0 +1,139 @@
+/* Contenedor principal */
+.containerRegistro {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+
+/* Sección superior - Botones de mercado */
+.topFrame {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  border: none !important;
+  padding: 1rem !important;
+  background: linear-gradient(135deg, #f5f7fa, #e4e9f2) !important;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Contenedor principal del contenido */
+.mainContent {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+}
+
+/* Formulario a la izquierda */
+.formContainer {
+  flex: 0 0 400px; /* Ancho fijo para el formulario */
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  border: none !important;
+  padding: 2rem !important;
+  background: white !important;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Para formularios largos */
+}
+
+/* Contenedor de la gráfica a la derecha */
+.chartContainer {
+  flex: 1; /* Ocupa el resto del espacio */
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  border: none !important;
+  padding: 2rem !important;
+  background: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chartPlaceholder {
+  text-align: center;
+  color: #7f8c8d;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chartPlaceholder h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos para los botones de mercado */
+.marketButton {
+  background: #ffffff !important;
+  color: #2c3e50 !important;
+  border: 1px solid #dfe6e9 !important;
+  min-width: 120px;
+  transition: all 0.3s !important;
+}
+
+.marketButton:hover {
+  background: #f1f3f5 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.activeButton {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.welcomeMessage {
+  text-align: center;
+  color: #7f8c8d;
+}
+
+.welcomeMessage h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .mainContent {
+    flex-direction: column;
+  }
+  
+  .formContainer {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  
+  .chartContainer {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .buttonGroup {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .marketButton {
+    width: 100%;
+  }
+  
+  .formContainer, .chartContainer {
+    padding: 1rem !important;
+  }
+}

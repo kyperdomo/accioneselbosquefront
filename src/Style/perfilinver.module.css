@@ -1,0 +1,298 @@
+/* Contenedor principal */
+.perfilContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Títulos */
+.mainTitle {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.mainTitle h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.sectionTitle {
+  margin: 3rem 0 1.5rem;
+  text-align: center;
+}
+
+.sectionTitle h2 {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.titleDivider {
+  height: 4px;
+  width: 100px;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-400));
+  margin: 0 auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header del perfil */
+.profileHeader {
+  margin-bottom: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: none;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  min-height: 24px;
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: var(--text-secondary-color);
+  width: 100px;
+  font-size: 0.95rem;
+}
+
+.infoValue {
+  color: var(--text-color);
+  margin-left: 1rem;
+  font-size: 1rem;
+  min-height: 1.2rem;
+}
+
+.roleTag {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.editButton {
+  background: var(--primary-color) !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.editButton:hover {
+  background: var(--primary-600) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sección de órdenes */
+.sectionCard {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: none;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+.ordersTable {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: rgba(0, 123, 255, 0.05);
+  border-radius: 8px 8px 0 0;
+}
+
+.orderRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s;
+}
+
+.orderRow:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.asset {
+  font-weight: 500;
+}
+
+/* Diálogo de edición */
+.editDialog {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.dialogHeader {
+  background: var(--primary-color) !important;
+  color: white !important;
+  padding: 1.25rem 1.5rem !important;
+  border-radius: 12px 12px 0 0 !important;
+  border: none !important;
+  font-size: 1.25rem;
+}
+
+.dialogContent {
+  padding: 0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.editFormContainer {
+  background: white;
+  padding: 1.5rem;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formLabel {
+  font-weight: 600;
+  color: var(--text-secondary-color);
+  font-size: 0.95rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.formInput::placeholder {
+  color: #adb5bd;
+}
+
+.formInput:hover {
+  border-color: var(--primary-color);
+}
+
+.formInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  border-color: var(--primary-color);
+}
+
+/* Footer del diálogo */
+.dialogFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+  border-radius: 0 0 12px 12px;
+}
+
+.saveButton {
+  background: var(--primary-color) !important;
+  border: none !important;
+  padding: 0.75rem 1.75rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.saveButton:hover {
+  background: var(--primary-600) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cancelButton {
+  background: #f8f9fa !important;
+  color: #495057 !important;
+  border: 1px solid #ddd !important;
+  padding: 0.75rem 1.75rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s !important;
+}
+
+.cancelButton:hover {
+  background: #e9ecef !important;
+  border-color: #ced4da !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .perfilContainer {
+    padding: 1rem;
+  }
+  
+  .mainTitle h1 {
+    font-size: 1.75rem;
+  }
+  
+  .sectionTitle h2 {
+    font-size: 1.5rem;
+  }
+  
+  .headerContent {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .editButton {
+    width: 100%;
+  }
+  
+  .tableHeader, .orderRow {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    overflow-x: auto;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .editDialog {
+    width: 90vw !important;
+  }
+  
+  .dialogFooter {
+    flex-direction: column;
+  }
+  
+  .saveButton, .cancelButton {
+    width: 100%;
+  }
+}

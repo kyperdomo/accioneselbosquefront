@@ -1,66 +1,110 @@
 import React, { useState } from 'react';
-import styles from '../Style/styles.module.css';
+import { Button } from 'primereact/button';
+import { InputNumber } from 'primereact/inputnumber';
+import { Dropdown } from 'primereact/dropdown';
+import { Card } from 'primereact/card';
+import styles from '../Style/ordenmercomNY.module.css';
 
-const empresas = ['Amazon', 'Apple', 'Tesla', 'General Electric Co.', 'The Coca-Cola Company'];
+const empresas = [
+  { name: 'Amazon', code: 'AMZN' },
+  { name: 'Apple', code: 'AAPL' },
+  { name: 'Tesla', code: 'TSLA' },
+  { name: 'General Electric Co.', code: 'GE' },
+  { name: 'The Coca-Cola Company', code: 'KO' }
+];
 
 const OrdenMerCoNY = () => {
   const [empresaSeleccionada, setEmpresaSeleccionada] = useState(empresas[0]);
-  const [cantidad, setCantidad] = useState('');
+  const [cantidad, setCantidad] = useState<number>(0);
+  const [precioUnitario, setPrecioUnitario] = useState<number>(0);
+  const [precioTotal, setPrecioTotal] = useState<number>(0);
 
-  const [precioUnitario, setPrecioUnitario] = useState('');
-  const [precioTotal, setPrecioTotal] = useState('');
-
-  const handleEmpresaChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setEmpresaSeleccionada(e.target.value);
-    // Lógica futura: pedir precio al back
+  const calcularTotal = () => {
+    const total = cantidad * precioUnitario;
+    setPrecioTotal(Number(total.toFixed(2)));
   };
 
-  const handleCantidadChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCantidad(e.target.value);
-    // Lógica futura: calcular total con back
+  const handleConfirmar = () => {
+    if (cantidad <= 0 || precioUnitario <= 0) return;
+    // Lógica para enviar la orden al backend
+    console.log({
+      empresa: empresaSeleccionada.code,
+      cantidad,
+      precioUnitario,
+      total: precioTotal
+    });
   };
+
+  const header = (
+    <div className={styles.cardHeader}>
+      <i className="pi pi-shopping-cart" style={{ fontSize: '1.5rem' }}></i>
+      <span>Nueva Orden de Compra - NYSE</span>
+    </div>
+  );
 
   return (
-    <div className={styles.ordenContainer}>
-      <h2>Crear Orden de Compra</h2>
-
+    <Card header={header} className={styles.ordenContainer}>
       <div className={styles.inputGroup}>
         <label>Empresa:</label>
-        <select value={empresaSeleccionada} onChange={handleEmpresaChange}>
-          {empresas.map((empresa) => (
-            <option key={empresa} value={empresa}>
-              {empresa}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className={styles.inputGroup}>
-        <label>Cantidad de acciones:</label>
-        <input
-          type="number"
-          min="0"
-          value={cantidad}
-          onChange={handleCantidadChange}
+        <Dropdown
+          value={empresaSeleccionada}
+          options={empresas}
+          onChange={(e) => setEmpresaSeleccionada(e.value)}
+          optionLabel="name"
+          placeholder="Seleccione una empresa"
+          className={styles.dropdown}
         />
       </div>
 
       <div className={styles.inputGroup}>
-        <label>Precio por acción:</label>
-        <input type="text" value={precioUnitario} readOnly />
+        <label>Cantidad de acciones:</label>
+        <InputNumber
+          value={cantidad}
+          onValueChange={(e) => {
+            setCantidad(e.value as number);
+            calcularTotal();
+          }}
+          mode="decimal"
+          min={0}
+          className={styles.input}
+        />
       </div>
 
       <div className={styles.inputGroup}>
-        <label>Total a pagar:</label>
-        <input type="text" value={precioTotal} readOnly />
+        <label>Precio por acción (USD):</label>
+        <div className={styles.valueDisplay}>
+          ${precioUnitario.toFixed(2)}
+        </div>
+      </div>
+
+      <div className={styles.inputGroup}>
+        <label>Total a pagar (USD):</label>
+        <div className={styles.valueDisplay}>
+          ${precioTotal.toFixed(2)}
+        </div>
       </div>
 
       <div className={styles.botones}>
-        <button className={styles.button}>Confirmar</button>
-        <button className={styles.buttonSecundario}>Cancelar</button>
+        <Button
+          label="Confirmar"
+          icon="pi pi-check"
+          className={styles.confirmButton}
+          onClick={handleConfirmar}
+          disabled={cantidad <= 0 || precioUnitario <= 0}
+        />
+        <Button
+          label="Cancelar"
+          icon="pi pi-times"
+          className={styles.cancelButton}
+          severity="secondary"
+        />
       </div>
-    </div>
+    </Card>
   );
 };
 
 export default OrdenMerCoNY;
+
+
+
+
