@@ -39,7 +39,7 @@ const OrdenMerCoNY = () => {
       if (response.ok) {
         alert('Orden enviada con éxito');
       } else {
-        alert('Hubo un error al enviar la orden');
+        alert('Hubo un error, intente mas tarde');
       }
     } catch (error) {
       console.error('Error al enviar la orden:', error);
