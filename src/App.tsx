@@ -11,23 +11,16 @@ import Portafolio from './Pages/Portafolio';
 
 
 import styles from './Style/styles.module.css';
+import { BrowserRouter } from 'react-router-dom';
 
 
 function App() {
   return (
-    <div className={styles.container}>
+   <div className={styles.container}>
       <Routes>
       <Route path="/" element={<PagPrincipal />} />
       <Route path="/login" element={<Login />} />
       <Route path="/registro" element={<Registro />} />
-      <Route path="/ordeninvercompra" element={<OrdenInverCompra />} />
-      <Route path="/ordenventa" element={<OrdenVenta />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/portafolio" element={<Portafolio />} />
-      <Route path="/grafica" element={<StockChart symbol="TSLA" apiKey="d0e1adhr01qv1dmkdp50d0e1adhr01qv1dmkdp5g" />} />
-
-      
-        
         
       </Routes>
     </div>

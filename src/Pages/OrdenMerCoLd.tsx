@@ -44,7 +44,7 @@ const OrdenMerCoLd = () => {
       });
 
       if (response.ok) {
-        alert('Orden enviada con éxito');
+        alert('Orden entegada con éxito');
       } else {
         alert('Hubo un error, intente mas tarde');
       }

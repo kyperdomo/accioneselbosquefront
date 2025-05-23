@@ -11,6 +11,7 @@ function Login() {
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [error, setError] = useState('');
+  const [formularioActivo, setFormularioActivo] = useState<'login' | 'inversionista'>('login');
   const navigate = useNavigate();
 
   const handleInversionistaClick = (e: React.FormEvent) => {
@@ -21,11 +22,41 @@ function Login() {
       return;
     }
 
+    const loginData = {
+      nickname: usuario,
+      password: contraseña,
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080/api/inversionista/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      if (response.ok) {
+        setError('');
+        setFormularioActivo('inversionista');
+      } else if (response.status === 401) {
+        setError('Contraseña incorrecta');
+      } else if (response.status === 404) {
+        setError('Usuario no encontrado');
+      } else {
+        setError('Error inesperado. Intenta más tarde.');
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      setError('Error al conectar con el servidor');
+    }
+    
     // Guardar estado de autenticación
     localStorage.setItem('isAuthenticated', 'true');
     
     // Redirigir al dashboard
     navigate('/dashboard');
+
   };
 
   return (
@@ -84,6 +115,4 @@ function Login() {
 }
 
 export default Login;
-
-
 
