@@ -35,14 +35,14 @@ const OrdenVentaNY: React.FC<OrdenVentaNYProps> = ({ onCompanySelect }) => {
     setLoadingPrice(true);
     onCompanySelect(e.value);
 
-    try {
-      // DESCOMENTA Y REEMPLAZA CON TU LLAMADA REAL AL BACKEND:
-      /*
-      const response = await fetch(`/api/stock-price/${e.value.code}`);
-      if (!response.ok) throw new Error('Error al obtener precio');
+     try {
+
+      const response = await fetch(`http://localhost:8080/api/precio/${e.value.code}`);
       const { currentPrice } = await response.json();
+
+      if (!response.ok) throw new Error('Error al obtener precio');
       setPrecioUnitario(currentPrice);
-      */
+
     } catch (error) {
       console.error("Error obteniendo precio:", error);
       setPrecioUnitario(0);

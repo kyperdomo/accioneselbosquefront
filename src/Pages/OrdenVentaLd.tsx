@@ -17,10 +17,7 @@ interface OrdenVentaLdProps {
 
 const empresas: Company[] = [
   { name: 'Shell plc', code: 'SHEL' },
-  { name: 'Unilever plc', code: 'ULVR' },
-  { name: 'AstraZeneca plc', code: 'AZN' },
-  { name: 'HSBC Holdings plc', code: 'HSBA' },
-  { name: 'Diageo plc', code: 'DGE' }
+  { name: 'AstraZeneca plc', code: 'AZN' }
 ];
 
 const OrdenVentaLd: React.FC<OrdenVentaLdProps> = ({ onCompanySelect }) => {
@@ -39,13 +36,10 @@ const OrdenVentaLd: React.FC<OrdenVentaLdProps> = ({ onCompanySelect }) => {
     onCompanySelect(e.value);
 
     try {
-      // DESCOMENTA Y REEMPLAZA CON TU LLAMADA REAL AL BACKEND:
-      /*
-      const response = await fetch(`/api/london-stock-price/${e.value.code}`);
+       const response = await fetch(`http://localhost:8080/api/precio/${e.value.code}`);
       if (!response.ok) throw new Error('Error al obtener precio');
       const { currentPrice } = await response.json();
       setPrecioUnitario(currentPrice);
-      */
     } catch (error) {
       console.error("Error obteniendo precio:", error);
       setPrecioUnitario(0);
@@ -87,22 +81,17 @@ const OrdenVentaLd: React.FC<OrdenVentaLdProps> = ({ onCompanySelect }) => {
     setIsSubmitting(true);
 
     try {
-      const ordenData = {
-        mercado: 'LONDON',
-        simbolo: empresaSeleccionada.code,
-        cantidad: cantidad,
-        precioUnitario: precioUnitario,
-        total: precioTotal,
-        moneda: 'GBP'
-      };
-
-      const response = await fetch('http://localhost:8080/api/orden', {
+      const response = await fetch('http://localhost:8080/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Market': 'LSE' // London Stock Exchange
+          
         },
-        body: JSON.stringify(ordenData),
+        body: JSON.stringify({
+          symbol: empresaSeleccionada.code,
+          shares: cantidad,
+          price: precioUnitario
+        }),
       });
 
       if (!response.ok) {

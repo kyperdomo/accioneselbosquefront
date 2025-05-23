@@ -37,13 +37,11 @@ const OrdenVentaNSA: React.FC<OrdenVentaNSAProps> = ({ onCompanySelect }) => {
     onCompanySelect(e.value);
 
     try {
-      // DESCOMENTA Y REEMPLAZA CON TU LLAMADA REAL AL BACKEND:
-      /*
-      const response = await fetch(`/api/nasdaq/stock-price/${e.value.code}`);
-      if (!response.ok) throw new Error('Error al obtener precio');
+       const response = await fetch(`http://localhost:8080/api/precio/${e.value.code}`);
       const { currentPrice } = await response.json();
+
+      if (!response.ok) throw new Error('Error al obtener precio');
       setPrecioUnitario(currentPrice);
-      */
     } catch (error) {
       console.error("Error obteniendo precio:", error);
       setPrecioUnitario(0);
@@ -61,33 +59,20 @@ const OrdenVentaNSA: React.FC<OrdenVentaNSAProps> = ({ onCompanySelect }) => {
     if (cantidad <= 0 || precioUnitario <= 0) return;
     setIsSubmitting(true);
 
-    try {
-      // EJEMPLO DE LLAMADA REAL (descomenta y adapta):
-      /*
-      const response = await fetch('/api/nasdaq/orders', {
+  try {
+      const response = await fetch('http://localhost:8080/api/orders', {
         method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'X-Market': 'NASDAQ' 
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           symbol: empresaSeleccionada.code,
           shares: cantidad,
-          price: precioUnitario,
-          total: precioTotal
+          price: precioUnitario
         })
       });
-      
+
       if (!response.ok) throw new Error('Error al crear orden');
       const result = await response.json();
-      // Manejar éxito (ej: mostrar notificación)
-      */
-      console.log({
-        empresa: empresaSeleccionada.code,
-        cantidad,
-        precioUnitario,
-        total: precioTotal
-      });
+      console.log("Orden creada:", result);
     } catch (error) {
       console.error("Error confirmando orden:", error);
     } finally {

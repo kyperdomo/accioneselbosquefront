@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styles from '../Style/styles.module.css';
-import PerfilInversionista from './PerfilInver';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [error, setError] = useState('');
-  const [formularioActivo, setFormularioActivo] = useState<'login' | 'inversionista'>('login');
+  const navigate = useNavigate();
 
   const handleInversionistaClick = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,17 +17,25 @@ function Login() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080//api/inversionista/login', {
+      const response = await fetch('http://localhost:8080/api/inversionista/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginData),
       });
 
       if (response.ok) {
+        localStorage.setItem('nickname', usuario);
+
+        // Obtener el perfil desde el backend
+        const perfilResponse = await fetch(`http://localhost:8080/api/inversionista/perfil?nickname=${usuario}`);
+        console.log('Nickname desde localStorage:', usuario);
+        if (perfilResponse.ok) {
+          const perfilData = await perfilResponse.json();
+          localStorage.setItem('userProfile', JSON.stringify(perfilData));
+        }
+
         setError('');
-        setFormularioActivo('inversionista');
+        navigate('/dashboard');
       } else if (response.status === 401) {
         setError('Contraseña incorrecta');
       } else if (response.status === 404) {
@@ -40,10 +48,6 @@ function Login() {
       setError('Error al conectar con el servidor');
     }
   };
-
-  if (formularioActivo === 'inversionista') {
-    return <PerfilInversionista />;
-  }
 
   return (
     <div className={styles.container}>

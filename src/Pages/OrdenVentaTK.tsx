@@ -15,11 +15,8 @@ interface OrdenVentaTkProps {
 }
 
 const empresas: Company[] = [
-  { name: 'Toyota Motor Corporation', code: 'TM' },
   { name: 'Sony Group Corporation', code: 'SONY' },
-  { name: 'Nintendo Co., Ltd.', code: 'NTDOY' },
-  { name: 'Mitsubishi UFJ Financial Group', code: 'MUFG' },
-  { name: 'Daikin Industries, Ltd.', code: 'DKILY' }
+  { name: 'Mitsubishi UFJ Financial Group', code: 'MUFG' }
 ];
 
 const OrdenVentaTK: React.FC<OrdenVentaTkProps> = ({ onCompanySelect }) => {
@@ -30,19 +27,17 @@ const OrdenVentaTK: React.FC<OrdenVentaTkProps> = ({ onCompanySelect }) => {
   const [loadingPrice, setLoadingPrice] = useState<boolean>(false);
 
   // Obtener precio real al seleccionar empresa
-  const handleCompanyChange = async (e: { value: Company }) => {
+   const handleCompanyChange = async (e: { value: Company }) => {
     setEmpresaSeleccionada(e.value);
     setLoadingPrice(true);
     onCompanySelect(e.value);
 
     try {
-      // DESCOMENTA Y REEMPLAZA CON TU LLAMADA REAL AL BACKEND:
-      /*
-      const response = await fetch(`/api/tokyo-stock-price/${e.value.code}`);
-      if (!response.ok) throw new Error('Error al obtener precio');
+      const response = await fetch(`http://localhost:8080/api/precio/${e.value.code}`);
       const { currentPrice } = await response.json();
+
+      if (!response.ok) throw new Error('Error al obtener precio');
       setPrecioUnitario(currentPrice);
-      */
     } catch (error) {
       console.error("Error obteniendo precio:", error);
       setPrecioUnitario(0);
@@ -56,13 +51,11 @@ const OrdenVentaTK: React.FC<OrdenVentaTkProps> = ({ onCompanySelect }) => {
     setPrecioTotal(Number((cantidad * precioUnitario).toFixed(2)));
   }, [cantidad, precioUnitario]);
 
-  const handleConfirmar = async () => {
+const handleConfirmar = async () => {
     if (cantidad <= 0 || precioUnitario <= 0) return;
-    
-    // EJEMPLO DE LLAMADA REAL (descomenta y adapta):
-    /*
+
     try {
-      const response = await fetch('/api/tokyo-orders', {
+      const response = await fetch('http://localhost:8080/api/tokyo-orders', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -74,18 +67,20 @@ const OrdenVentaTK: React.FC<OrdenVentaTkProps> = ({ onCompanySelect }) => {
           price: precioUnitario
         })
       });
+
       if (!response.ok) throw new Error('Error al crear orden');
-      // Manejar éxito
+      const result = await response.json();
+      console.log("Orden creada:", result);
     } catch (error) {
       console.error("Error confirmando orden:", error);
+    } finally {
     }
-    */
   };
 
   const header = (
     <div className={styles.cardHeader}>
       <i className="pi pi-shopping-cart" style={{ fontSize: '1.5rem' }}></i>
-      <span>Nueva Orden de Venta - Tokyo</span>
+      <span>Nueva Orden de venta - Tokyo</span>
     </div>
   );
 

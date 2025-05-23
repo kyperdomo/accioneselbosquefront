@@ -28,12 +28,12 @@ const Inversionista = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
       setError('Las contraseñas no coinciden');
       return;
     }
-    
+
     if (!nombre || !correo || !usuario || !password || !confirmPassword) {
       setError('Por favor complete todos los campos');
       return;
@@ -54,14 +54,51 @@ const Inversionista = () => {
     }
   };
 
-  const handlePinSubmit = (e: React.FormEvent) => {
+  const handlePinSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const pinString = pin.join('');
+
     if (/^\d{6}$/.test(pinString)) {
       setIsPinValid(true);
-      alert('Registro completado exitosamente');
-      setMostrarPin(false);
-      // Aquí puedes agregar la lógica para enviar los datos al backend
+
+      const inversionistaData = {
+        name: nombre,
+        correo: correo,
+        nickname: usuario,
+        password: password,
+        comisionista: comisionista,
+        subscription: "normal",
+        id_portafolio: 1
+      };
+
+      try {
+        const response = await fetch('http://localhost:8080/api/inversionista/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(inversionistaData),
+        });
+
+        if (response.ok) {
+          alert('Registro completado exitosamente');
+          setMostrarPin(false);
+          setNombre('');
+          setCorreo('');
+          setUsuario('');
+          setPassword('');
+          setConfirmPassword('');
+          setComisionista(null);
+          setPin(['', '', '', '', '', '']);
+        } else {
+          const message = await response.text();
+          setError(`Error al registrar: ${message}`);
+        }
+      } catch (error) {
+        console.error(error);
+        setError('Error de red al registrar');
+      }
+
     } else {
       setIsPinValid(false);
     }
@@ -69,9 +106,9 @@ const Inversionista = () => {
 
   const footer = (
     <div className={styles.pinFooter}>
-      <Button 
-        label="Verificar PIN" 
-        onClick={handlePinSubmit} 
+      <Button
+        label="Verificar PIN"
+        onClick={handlePinSubmit}
         className={styles.pinVerifyButton}
       />
     </div>
@@ -159,15 +196,15 @@ const Inversionista = () => {
           </div>
         )}
 
-        <Button 
-          label="Registrar" 
-          type="submit" 
+        <Button
+          label="Registrar"
+          type="submit"
           className={styles.submitButton}
         />
       </form>
 
-      <Dialog 
-        visible={mostrarPin} 
+      <Dialog
+        visible={mostrarPin}
         onHide={() => {
           setMostrarPin(false);
           setIsPinValid(true);
@@ -183,7 +220,7 @@ const Inversionista = () => {
         <div className={styles.pinDialogBody}>
           <p className={styles.pinInstructions}>Ingrese el PIN de 6 dígitos enviado a:</p>
           <p className={styles.userEmail}>{correo}</p>
-          
+
           <div className={styles.pinInputContainer}>
             {pin.map((digit, index) => (
               <InputText
@@ -203,11 +240,11 @@ const Inversionista = () => {
               />
             ))}
           </div>
-          
+
           {!isPinValid && (
-            <Message 
-              severity="error" 
-              text="El PIN debe ser de 6 dígitos numéricos." 
+            <Message
+              severity="error"
+              text="El PIN debe ser de 6 dígitos numéricos."
               className={styles.errorMessage}
             />
           )}
