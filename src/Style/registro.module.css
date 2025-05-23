@@ -1,0 +1,94 @@
+.registroBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbe2ff, #dbe2ff);
+  padding: 2rem;
+}
+
+.registroCenterContainer {
+  width: 100%;
+  max-width: 800px;
+}
+
+.registroCard {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.registroContent {
+  padding: 2rem;
+}
+
+.registroTitle {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+  font-weight: 600;
+}
+
+.registroOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.registroButton {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.75rem;
+  background-color: #f8f9fa !important;
+  color: #495057 !important;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 6px !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s !important;
+}
+
+.registroButton:hover {
+  background-color: #e9ecef !important;
+  transform: translateY(-2px);
+}
+
+.activeButton {
+  background-color: #4CAF50 !important;
+  color: white !important;
+  border-color: #4CAF50 !important;
+}
+
+.registroFormContainer {
+  width: 100%;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+}
+
+/* Estilos para los formularios hijos */
+.registroFormContainer label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.registroFormContainer input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.registroFormContainer input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}

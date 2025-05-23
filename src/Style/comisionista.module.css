@@ -1,0 +1,143 @@
+/* Estilos para el formulario de comisionista */
+.comisionistaContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.comisionistaForm {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para el diálogo del PIN */
+.pinDialog {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+  border: none !important;
+  width: 400px !important;
+}
+
+.pinDialogContent {
+  background-color: white !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+}
+
+.pinDialogHeader {
+  background-color: white !important;
+  border-bottom: 1px solid #eee !important;
+  padding: 1.5rem !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+}
+
+.pinDialogBody {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.pinInstructions {
+  color: #666;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.userEmail {
+  font-weight: 600;
+  color: #1a237e;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  word-break: break-all;
+}
+
+.pinInputContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pinInput {
+  width: 45px !important;
+  height: 45px !important;
+  text-align: center !important;
+  font-size: 1.2rem !important;
+  border: 2px solid #ddd !important;
+  border-radius: 8px !important;
+}
+
+.pinInput:focus {
+  border-color: #4CAF50 !important;
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25) !important;
+}
+
+.pinVerifyButton {
+  background-color: #4CAF50 !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important;
+  font-size: 1rem !important;
+  border-radius: 50px !important;
+  transition: all 0.3s !important;
+  margin: 0 auto;
+  display: block;
+}
+
+.pinVerifyButton:hover {
+  background-color: #43A047 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.error {
+  border-color: #f44336 !important;
+}
+
+.errorMessage {
+  margin-top: 1rem;
+}
+
+/* Estilos generales consistentes */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.formInput {
+  width: 100%;
+}
+
+.submitButton {
+  width: 100%;
+  background-color: #4CAF50 !important;
+  border: none !important;
+  padding: 0.75rem !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
+  border-radius: 6px !important;
+}
+
+.submitButton:hover {
+  background-color: #43A047 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.pinFooter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+}
