@@ -1,89 +1,80 @@
 import React, { useState } from 'react';
-import { InputText } from 'primereact/inputtext';
-import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
-import { Password } from 'primereact/password';
-import { Message } from 'primereact/message';
-import { useNavigate } from 'react-router-dom';
-import styles from '../Style/login.module.css';
+import styles from '../Style/styles.module.css';
+import PerfilInversionista from './PerfilInver';
 
 function Login() {
   const [usuario, setUsuario] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [formularioActivo, setFormularioActivo] = useState<'login' | 'inversionista'>('login');
 
-  const handleInversionistaClick = (e: React.FormEvent) => {
+  const handleInversionistaClick = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!usuario || !contraseña) {
-      setError('Por favor ingrese usuario y contraseña');
-      return;
-    }
 
-    // Guardar estado de autenticación
-    localStorage.setItem('isAuthenticated', 'true');
-    
-    // Redirigir al dashboard
-    navigate('/dashboard');
+    const loginData = {
+      nickname: usuario,
+      password: contraseña,
+    };
+
+    try {
+      const response = await fetch('http://localhost:8080//api/inversionista/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      if (response.ok) {
+        setError('');
+        setFormularioActivo('inversionista');
+      } else if (response.status === 401) {
+        setError('Contraseña incorrecta');
+      } else if (response.status === 404) {
+        setError('Usuario no encontrado');
+      } else {
+        setError('Error inesperado. Intenta más tarde.');
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      setError('Error al conectar con el servidor');
+    }
   };
 
+  if (formularioActivo === 'inversionista') {
+    return <PerfilInversionista />;
+  }
+
   return (
-    <div className={styles.loginBackground}>
-      <div className={styles.loginCenterContainer}>
-        <Card className={styles.loginCard}>
-          <div className={styles.loginContent}>
-            <h1 className={styles.loginTitle}>Iniciar Sesión</h1>
-            
-            <form onSubmit={handleInversionistaClick} className={styles.loginForm}>
-              <div className={styles.loginField}>
-                <label htmlFor="usuario" className={styles.inputLabel}>Correo o Usuario</label>
-                <InputText
-                  id="usuario"
-                  value={usuario}
-                  onChange={(e) => setUsuario(e.target.value)}
-                  className={styles.loginInput}
-                />
-              </div>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Iniciar Sesión</h1>
+      <form onSubmit={handleInversionistaClick}>
+        <label>Correo o Usuario:</label>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="text"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+          />
+        </div>
 
-              <div className={styles.loginField}>
-                <label htmlFor="contraseña" className={styles.inputLabel}>Contraseña</label>
-                <Password
-                  id="contraseña"
-                  value={contraseña}
-                  onChange={(e) => setContraseña(e.target.value)}
-                  feedback={false}
-                  toggleMask
-                  className={styles.loginInput}
-                  inputClassName={styles.loginInput}
-                />
-              </div>
+        <label>Contraseña:</label>
+        <div className={styles.inputGroup}>
+          <input
+            className={styles.input}
+            type="password"
+            value={contraseña}
+            onChange={(e) => setContraseña(e.target.value)}
+          />
+        </div>
 
-              {error && (
-                <div className={styles.loginError}>
-                  <Message severity="error" text={error} />
-                </div>
-              )}
+        {error && <p className={styles.error}>{error}</p>}
 
-              <Button 
-                label="INICIAR SESIÓN" 
-                type="submit" 
-                className={styles.loginButton}
-              />
-            </form>
-
-            <div className={styles.loginFooter}>
-              <p>¿No tienes cuenta? <a href="#">Regístrate</a></p>
-              <p><a href="#">¿Olvidaste tu contraseña?</a></p>
-            </div>
-          </div>
-        </Card>
-      </div>
+        <button className={styles.button} type="submit">Iniciar Sesión</button>
+      </form>
     </div>
   );
 }
 
 export default Login;
-
-
-
